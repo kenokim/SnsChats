@@ -20,8 +20,18 @@ public class Chats {
 
     private Integer numMembers;
 
+    @NotNull
+    private Integer maxNumMembers;
+
     private LocalDateTime createAt;
 
     private LocalDateTime lastModified;
 
+    public static Chats createChats(Member member, String title, Integer maxNumMembers, LocalDateTime createAt) {
+        Chats chats = new Chats();
+        chats.title = title;
+        chats.maxNumMembers = maxNumMembers;
+        chats.createAt = createAt;
+        return chats;
+    }
 }
