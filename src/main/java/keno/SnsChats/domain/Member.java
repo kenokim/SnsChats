@@ -17,4 +17,9 @@ public class Member {
     @NotNull
     private String name;
 
+    public static Member createMember(String name) {
+        Member member = new Member();
+        member.name = name;
+        return member;
+    }
 }

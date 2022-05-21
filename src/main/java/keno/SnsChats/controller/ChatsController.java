@@ -10,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -31,7 +30,7 @@ public class ChatsController {
 
     @PostMapping
     public ResponseEntity createChats(ChatsCreateDto dto) {
-        chatsService.create(dto.getTitle(), dto.getMaxMember(), currentMember.id());
+        chatsService.create(dto.getTitle(), dto.getMaxNumMembers(), currentMember.id());
         return new ResponseEntity(HttpStatus.OK);
     }
 
