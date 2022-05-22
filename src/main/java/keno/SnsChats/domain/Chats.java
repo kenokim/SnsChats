@@ -18,7 +18,7 @@ public class Chats {
     @NotNull
     private String title;
 
-    private Integer numMembers;
+    private Integer numMembers = 0;
 
     @NotNull
     private Integer maxNumMembers;
@@ -32,6 +32,8 @@ public class Chats {
         chats.title = title;
         chats.maxNumMembers = maxNumMembers;
         chats.createAt = createAt;
+        chats.lastModified = createAt;
+        chats.numMembers = 1;
         return chats;
     }
 }

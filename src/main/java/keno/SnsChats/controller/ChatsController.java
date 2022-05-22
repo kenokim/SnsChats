@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/chats")
@@ -22,6 +23,12 @@ public class ChatsController {
     private final CurrentMember currentMember;
 
     private final ModelMapper modelMapper;
+
+
+    @GetMapping
+    public List<ChatsDto> findAllChats() {
+        return List.of(convertToDto(chatsService.findChatsById(2L)));
+    }
 
     @GetMapping("/{chatsId}")
     public ChatsDto findChatsById(@PathVariable("chatsId") Long chatsId) {
