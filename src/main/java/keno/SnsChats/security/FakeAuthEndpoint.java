@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,8 +37,21 @@ public class FakeAuthEndpoint {
     }
 
     @PostMapping("/fake/register")
-    public MemberDto register() {
+    public MemberDto register(@PathVariable(required = false) String name,
+                              @PathVariable(required = false) String email,
+                              @PathVariable(required = false) String password
+    ) {
         return MemberDto.createMock();
+    }
+
+    @PostMapping("/fake")
+    public ResponseEntity fakeHello() {
+        return new ResponseEntity("Hello", HttpStatus.OK);
+    }
+
+    @PostMapping("/testlogin")
+    public ResponseEntity testLoginEndpoint() {
+        return new ResponseEntity(MemberDto.createMock(), HttpStatus.OK);
     }
 
 }

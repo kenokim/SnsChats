@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from '@/components/HelloWorld.vue'
+import { authComputed } from '@/vuex/helpers.js'
 </script>
 
 <template>
@@ -17,13 +18,32 @@ import HelloWorld from '@/components/HelloWorld.vue'
         <RouterLink to="/fakechats">FakeChats</RouterLink>
         <br>
         <RouterLink to="/register">Register</RouterLink>
+
+        <!--<RouterLink v-if="!loggedIn" to="/login">Login</RouterLink>
+        <button v-else type="button" class="logoutButton" @click="logout">Logout</button>-->
         <RouterLink to="/login">Login</RouterLink>
+        <button type="button" class="logoutButton" @click="logout">Logout</button>
+
       </nav>
     </div>
   </header>
 
   <RouterView />
 </template>
+
+<script>
+  export default {
+    methods: {
+      logout () {
+        console.log('Logged out')
+        this.$store.commit('CLEAR_USER_DATA')
+      }
+    },
+    computed: {
+      ...authComputed
+    }
+  }
+</script>
 
 <style>
 @import '@/assets/base.css';

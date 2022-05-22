@@ -1,4 +1,7 @@
 <template>
+    <span>
+      You must login first!
+    </span>
       <div>
         <form @submit.prevent="login">
           <label for="email">
@@ -20,7 +23,11 @@
 </template>
 
 <script>
+import axios from 'axios'
   export default {
+    components: {
+      axios
+    },
     data () {
       return {
         email: '',
@@ -34,16 +41,14 @@
           password: this.password
         })
         .then( () => {
-          this.$router.push( { name: 'chatslist'} )
+          this.$router.push( { name: 'chats'} )
         })
       },
       testlogin() {
-        this.$store.dispatch('testlogin', {
-          email: this.email,
-          password: this.password
-        })
-        .then( () => {
-          this.$router.push( { name: 'chatslist' } )
+        return axios.post('http://localhost:8080/testlogin')
+          .then(({ data }) => {
+            this.$store.commit('SET_USER_DATA', data) 
+            this.$router.push({ name: 'chats' })
         })
       }
     }

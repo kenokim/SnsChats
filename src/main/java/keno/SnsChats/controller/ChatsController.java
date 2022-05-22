@@ -12,6 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 @Slf4j
 @RestController
@@ -26,8 +29,17 @@ public class ChatsController {
 
 
     @GetMapping
-    public List<ChatsDto> findAllChats() {
+    public List<ChatsDto> findAllChats(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String token = request.getHeader("Authorization");
+        if (token == null) {
+            response.sendError(401);
+        }
         return List.of(convertToDto(chatsService.findChatsById(2L)));
+    }
+
+    @PostMapping
+    public ResponseEntity createChats() {
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping("/{chatsId}")
@@ -35,11 +47,11 @@ public class ChatsController {
         return convertToDto(chatsService.findChatsById(chatsId));
     }
 
-    @PostMapping
+    /*@PostMapping
     public ResponseEntity createChats(ChatsCreateDto dto) {
         chatsService.create(dto.getTitle(), dto.getMaxNumMembers(), currentMember.id());
         return new ResponseEntity(HttpStatus.OK);
-    }
+    }*/
 
     private ChatsDto convertToDto(Chats chats) {
         ChatsDto dto = modelMapper.map(chats, ChatsDto.class);
