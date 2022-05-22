@@ -16,6 +16,7 @@
           </button>
         </form>
       </div>
+      <button v-on:click="testlogin">TestLogin</button>
 </template>
 
 <script>
@@ -34,6 +35,15 @@
         })
         .then( () => {
           this.$router.push( { name: 'chatslist'} )
+        })
+      },
+      testlogin() {
+        this.$store.dispatch('testlogin', {
+          email: this.email,
+          password: this.password
+        })
+        .then( () => {
+          this.$router.push( { name: 'chatslist' } )
         })
       }
     }

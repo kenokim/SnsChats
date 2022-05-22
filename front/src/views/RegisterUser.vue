@@ -1,6 +1,7 @@
 <template>
       <div>
-        <form>
+        <!--<form @submit.prevent="register">-->
+        <form v-on:click="register">
           <label for="name">
             Name:
           </label>
@@ -21,13 +22,40 @@
           </button>
         </form>
       </div>
+
+      <button v-on:click="send">Button</button>
+      
 </template>
 
 <script>
+import axios from 'axios'
 export default {
+  components: {
+    axios,
+  },
   data () {
     return {
-      name:""
+      name: '',
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    register () {
+      axios.post('http://localhost:8080/register', { name: this.name, email: this.email, password: this.password })
+      .then(({ data }) => {
+        this.$store.commit('SET_USER_DATA', data) 
+        this.$router.push({ name: 'fakechats' })
+      })
+    },
+
+    send() {
+      return axios.post('http://localhost:8080/fake/register')
+      .then(({ data }) => {
+        console.log('user data is:', data)
+        this.$store.commit('SET_USER_DATA', data) 
+        this.$router.push({ name: 'fakechats' })
+      })
     }
   }
 }
