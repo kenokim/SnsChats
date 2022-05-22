@@ -11,10 +11,9 @@ export default {
     }
   },
   created() {
-    axios.get('http://localhost:8080/chats').then(( { data } ) => {
-      this.chatsList = data
+    axios.get('http://localhost:8080/fake/chats').then(( { data } ) => {
+      this.chatsList = data.chatsList
       this.isLoding = false
-      console.log(data)
     })
   }
 }
@@ -24,7 +23,6 @@ export default {
 <div>
   <span>Hello world</span>
   <br>
-  {{ chatsList }}
   <template v-if="!isLoading">
     <ChatsVo v-for="chats in chatsList" :key="chats.id" :chats="chats" />
   </template>
