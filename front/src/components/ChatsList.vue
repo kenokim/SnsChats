@@ -11,18 +11,22 @@ export default {
     }
   },
   created() {
-    axios.get('http://localhost:8080/chats').then(( { data } ) => {
+    this.load()
+  },
+  methods: {
+    load () {
+      axios.get('http://localhost:8080/chats').then(( { data } ) => {
       this.chatsList = data
       this.isLoding = false
       console.log(data)
     }).catch( () => {
       this.$router.push({ name: 'login' })
     })
-  },
-  methods: {
-    generate() {
+    },
+    generate () {
       axios.post('http://localhost:8080/chats').then(() => {
-        this.$router.push({ name: 'chats' })
+        //this.$router.push({ name: 'chats' })
+        this.load()
       })
     }
   }

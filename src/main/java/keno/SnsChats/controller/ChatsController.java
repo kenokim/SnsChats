@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Slf4j
 @RestController
 @RequestMapping("/chats")
@@ -34,11 +37,12 @@ public class ChatsController {
         if (token == null) {
             response.sendError(401);
         }
-        return List.of(convertToDto(chatsService.findChatsById(2L)));
+        return chatsService.findAll().stream().map(c -> convertToDto(c)).collect(Collectors.toList());
     }
 
     @PostMapping
     public ResponseEntity createChats() {
+        chatsService.create("Hello " + LocalDateTime.now().toString(), 10, currentMember.id());
         return new ResponseEntity(HttpStatus.OK);
     }
 
