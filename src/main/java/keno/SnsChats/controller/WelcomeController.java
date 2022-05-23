@@ -11,4 +11,9 @@ public class WelcomeController {
     public ResponseEntity hello() {
         return new ResponseEntity("Ok", HttpStatus.OK);
     }
+
+    @GetMapping("/hellobuddy")
+    public ResponseEntity hellobuddy() {
+        return new ResponseEntity("Ok Man!", HttpStatus.OK);
+    }
 }

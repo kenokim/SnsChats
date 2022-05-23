@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     load () {
-      axios.get('http://localhost:8080/chats').then(( { data } ) => {
+      axios.get('http://3.36.249.5:8080/chats').then(( { data } ) => {
       this.chatsList = data
       this.isLoading = false
       console.log(data)
@@ -41,7 +41,7 @@ export default {
     })
     },
     generate () {
-      axios.post('http://localhost:8080/chats').then(() => {
+      axios.post('http://3.36.249.5:8080/chats').then(() => {
         //this.$router.push({ name: 'chats' })
         this.load().then(() => {
         //  this.isLoading = false

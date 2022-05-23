@@ -9,4 +9,3 @@ Version1: JAVA + Spring MVC 로 기본기능 + 작동하는 app 만들기
 <br>
 
 22.05.23 현재 아키텍쳐 = node.js (vue) + tomcat (spring) 두 개 서버를 도커로..
--> 개선 예정

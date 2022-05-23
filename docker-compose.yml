@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  app:
+    #container_name: snschats
+    image: keno0403/snschats-docker:latest
+    ports:
+      - 8080:8080
+    #working_dir: /app
+    #volumes:
+    #  - ./:/app
+    #command: [ “./gradlew”, “bootrun” ]
+    #restart: always
+  front:
+    image: keno0403/snschats-front:latest
+    ports:
+      - 3000:3000
+    #working_dir: /app2
+    #volumes:
+    #  - ./front/:/app2
+    #command: ["npm", "run", "dev"]
+    #restart: always
