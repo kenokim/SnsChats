@@ -8,7 +8,13 @@ import SupportIcon from './icons/IconSupport.vue'
 </script>
 
 <template>
-  <WelcomeItem>
+  <div>
+    <h5>
+      안녕하세요 !<br>
+      채팅 버튼을 눌러 채팅을 시작하세요 !
+    </h5>
+  </div>
+  <!--<WelcomeItem>
     <template #icon>
       <DocumentationIcon />
     </template>
@@ -80,5 +86,5 @@ import SupportIcon from './icons/IconSupport.vue'
     As an independent project, Vue relies on community backing for its sustainability. You can help
     us by
     <a target="_blank" href="https://vuejs.org/sponsor/">becoming a sponsor</a>.
-  </WelcomeItem>
+  </WelcomeItem>-->
 </template>

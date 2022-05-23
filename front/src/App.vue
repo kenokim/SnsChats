@@ -12,8 +12,8 @@ import { authComputed } from '@/vuex/helpers.js'
       <HelloWorld msg="Sns Chats" />
 
       <nav>
-        <!--<RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>-->
+        <RouterLink class="btn btn-success btn-sm md-3" to="/">홈</RouterLink>
+        <!--<RouterLink to="/about">About</RouterLink>-->
         <RouterLink class="btn btn-success btn-sm" to="/chats">채팅</RouterLink>
         <RouterLink class="btn btn-success btn-sm" to="/fakechats">FakeChats</RouterLink>
         <!--<RouterLink to="/register">Register</RouterLink>-->
