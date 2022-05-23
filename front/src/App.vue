@@ -6,23 +6,22 @@ import { authComputed } from '@/vuex/helpers.js'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <img alt="Vue logo" class="logo" src="@/assets/bulbarsaur.jpg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld msg="Sns Chats" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/chats">Chats</RouterLink>
-        <RouterLink to="/fakechats">FakeChats</RouterLink>
-        <br>
-        <RouterLink to="/register">Register</RouterLink>
-
+        <!--<RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>-->
+        <RouterLink class="btn btn-success btn-sm" to="/chats">채팅</RouterLink>
+        <RouterLink class="btn btn-success btn-sm" to="/fakechats">FakeChats</RouterLink>
+        <!--<RouterLink to="/register">Register</RouterLink>-->
         <!--<RouterLink v-if="!loggedIn" to="/login">Login</RouterLink>
         <button v-else type="button" class="logoutButton" @click="logout">Logout</button>-->
-        <RouterLink to="/login">Login</RouterLink>
-        <button type="button" class="logoutButton" @click="logout">Logout</button>
+        <RouterLink class="btn btn-primary btn-sm" to="/login">로그인</RouterLink>
+        <button type="button" class="btn btn-secondary btn-sm" @click="logout">로그아웃</button>
+    
 
       </nav>
     </div>

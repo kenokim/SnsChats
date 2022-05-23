@@ -1,5 +1,23 @@
 <template>
-    <span>
+<div>
+  <h5>먼저 로그인 하세요 !</h5>
+  <br>
+  <button class="btn btn-primary w-50" v-on:click="testlogin">
+    <img src="@/assets/pokeball2.png" width="27">
+    테스트 회원 로그인
+  </button>
+  <br><br>
+  <button class="btn btn-secondary w-50">
+    <img src="@/assets/googlelogo.jpg" width="27">
+    구글 로그인
+  </button>
+  <br><br>
+  <button class="btn btn-warning w-50">
+    <img src="@/assets/instalogo.jpeg" width="27">
+    인스타 로그인
+  </button>
+</div>
+    <!--<span>
       You must login first!
     </span>
       <div>
@@ -19,7 +37,8 @@
           </button>
         </form>
       </div>
-      <button v-on:click="testlogin">TestLogin</button>
+      <button v-on:click="testlogin">TestLogin</button>-->
+
 </template>
 
 <script>

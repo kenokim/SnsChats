@@ -5,12 +5,14 @@ import router from './router'
 import { createStore } from 'vuex'
 import Vuex from 'vuex'
 import axios from 'axios'
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap"
 
 const store = createStore({
   state () {
-    return {
+    //return {
       user: null
-    }
+    //}
   },
   mutations: {
     SET_USER_DATA(state, userData) {

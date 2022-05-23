@@ -11,10 +11,14 @@ defineProps({
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
     <h3>
-      You’ve successfully created a project with
+      <!--You’ve successfully created a project with
       <a target="_blank" href="https://vitejs.dev/">Vite</a> +
-      <a target="_blank" href="https://vuejs.org/">Vue 3</a>.
+      <a target="_blank" href="https://vuejs.org/">Vue 3</a>-->
+      SNS 채팅에 오신걸 환영합니다!
     </h3>
+    <br>
+    <div v-if="this.$store.user != null"></div>
+      {{this.$store.user}}
   </div>
 </template>
 
