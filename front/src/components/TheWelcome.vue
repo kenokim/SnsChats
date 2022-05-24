@@ -13,6 +13,7 @@ import SupportIcon from './icons/IconSupport.vue'
       안녕하세요 !<br>
       채팅 버튼을 눌러 채팅을 시작하세요 !
     </h5>
+    <img src="@/assets/bulbarsaurgif.gif" width="200"/>
   </div>
   <!--<WelcomeItem>
     <template #icon>

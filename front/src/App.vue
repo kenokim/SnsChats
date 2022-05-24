@@ -15,7 +15,7 @@ import { authComputed } from '@/vuex/helpers.js'
         <RouterLink class="btn btn-success btn-sm md-3" to="/">홈</RouterLink>
         <!--<RouterLink to="/about">About</RouterLink>-->
         <RouterLink class="btn btn-success btn-sm" to="/chats">채팅</RouterLink>
-        <RouterLink class="btn btn-success btn-sm" to="/fakechats">FakeChats</RouterLink>
+        <!--<RouterLink class="btn btn-success btn-sm" to="/fakechats">FakeChats</RouterLink>-->
         <!--<RouterLink to="/register">Register</RouterLink>-->
         <!--<RouterLink v-if="!loggedIn" to="/login">Login</RouterLink>
         <button v-else type="button" class="logoutButton" @click="logout">Logout</button>-->

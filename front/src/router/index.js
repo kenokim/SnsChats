@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ChatsView from '../views/ChatsView.vue'
+import ChatsDetails from '../views/ChatsDetails.vue'
 import FakeChatsView from '../views/FakeChatsView.vue'
 import RegisterUser from '../views/RegisterUser.vue'
 import LoginUser from '../views/LoginUser.vue'
@@ -25,6 +26,11 @@ const router = createRouter({
       path: '/chats',
       name: 'chats',
       component: ChatsView
+    },
+    {
+      path: '/chats/:id',
+      name: 'ChatsDetails',
+      component: ChatsDetails
     },
     {
       path: '/fakechats',
