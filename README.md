@@ -1,6 +1,8 @@
 ## SNS Chats
 ### [demo](http://3.36.249.5:3000)
 
+개발 로그 https://devstudy1413.tistory.com/90
+
 SNS 계정을 활용한 오픈채팅 어플리케이션
 22.05.21 시작 
 
