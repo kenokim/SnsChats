@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +45,7 @@ public class ChatsController {
 */
 
     @GetMapping
-    public List<ChatsDto> findAllChats(@RequestParam(required = false) Integer pageNum) throws IOException {
+    public List<ChatsDto> findAllChats(Authentication authentication, @RequestParam(required = false) Integer pageNum) throws IOException {
         return chatsService.findAll().stream().map(c -> convertToDto(c)).collect(Collectors.toList());
     }
 

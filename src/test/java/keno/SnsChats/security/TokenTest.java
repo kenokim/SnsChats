@@ -12,7 +12,7 @@ public class TokenTest {
 
     @Test
     void basicTokenTest() {
-        String token = tokenProvider.token();
+        String token = tokenProvider.token(1L);
         assertThat(token).isNotNull();
     }
 }

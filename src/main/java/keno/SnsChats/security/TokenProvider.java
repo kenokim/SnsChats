@@ -15,13 +15,18 @@ public class TokenProvider {
     private final CurrentMember currentMember;
 
     public String token() {
+        return token(currentMember.id());
+    }
+
+
+    public String token(Long id) {
         Instant now = Instant.now();
         long expiry = 36000L;
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .issuer("self")
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(expiry))
-                .subject(currentMember.id().toString())
+                .subject(id.toString())
                 .build();
         return this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
     }

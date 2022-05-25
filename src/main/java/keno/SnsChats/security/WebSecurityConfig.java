@@ -28,14 +28,11 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Arrays;
 import java.util.Base64;
-import java.util.UUID;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @EnableWebSecurity
 public class WebSecurityConfig {
-    @Value("${jwt.secret.key}")
-    private String secretKey;
 
     @Value("${jwt.public.key}")
     RSAPublicKey pubKey;
@@ -43,13 +40,14 @@ public class WebSecurityConfig {
     @Value("${jwt.private.key}")
     RSAPrivateKey privKey;
 
-    // private RSAPublicKey publicKey;
-
+    // Case using symmetric encryption
+    /*@Value("${jwt.secret.key}")
+    private String secretKey;
     private SecretKey getSecretKey() {
         byte[] decodedKey = Base64.getDecoder().decode(secretKey);
         SecretKey originalKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES");
         return originalKey;
-    }
+    }*/
 
     @Bean
     public SecurityFilterChain apiFilterChain(HttpSecurity http) throws Exception {
@@ -75,19 +73,21 @@ public class WebSecurityConfig {
 
 
 
-    @Bean
-    public JwtAuthenticationConverter jwtAuthenticationConverter() {
-        return new JwtAuthenticationConverter();
-    }
-
-    /*@Bean
-    public JwtDecoder jwtDecoder() {
-        return NimbusJwtDecoder.withSecretKey(getSecretKey()).build();
-    }*/
+    //@Bean
+    //public JwtAuthenticationConverter jwtAuthenticationConverter() {
+    //    return new JwtAuthenticationConverter();
+    //}
 
     @Bean
     JwtDecoder jwtDecoder() {
         return NimbusJwtDecoder.withPublicKey(this.pubKey).build();
+    }
+
+    @Bean
+    JwtEncoder jwtEncoder() {
+        JWK jwk = new RSAKey.Builder(this.pubKey).privateKey(this.privKey).build();
+        JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+        return new NimbusJwtEncoder(jwks);
     }
 
     /*@Bean
@@ -101,12 +101,7 @@ public class WebSecurityConfig {
         return new NimbusJwtEncoder(jwks);
     }*/
 
-    @Bean
-    JwtEncoder jwtEncoder() {
-        JWK jwk = new RSAKey.Builder(this.pubKey).privateKey(this.privKey).build();
-        JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
-        return new NimbusJwtEncoder(jwks);
-    }
+
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {

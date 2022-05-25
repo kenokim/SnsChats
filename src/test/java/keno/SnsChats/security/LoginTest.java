@@ -43,7 +43,7 @@ public class LoginTest {
     }
 
     public String createValidToken () {
-        return tokenProvider.token();
+        return tokenProvider.token(1L);
     }
     public String createInvalidToken () {
         return "access-token";
@@ -73,6 +73,17 @@ public class LoginTest {
         HttpEntity req = new HttpEntity(headers);
         ResponseEntity res = template.exchange("/weather", HttpMethod.GET, req, WeatherDto.class);
         assertThat(res.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
+    public void 인증정보_조회() {
+        String token = tokenProvider.token(1L);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity req = new HttpEntity(headers);
+        ResponseEntity res = template.exchange("/whoami", HttpMethod.GET, req, Long.class);
+        assertThat(res.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(res.getBody().toString()).isEqualTo("1");
     }
 
 }
