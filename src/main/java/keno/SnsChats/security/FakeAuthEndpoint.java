@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class FakeAuthEndpoint {
+    private final TokenProvider tokenProvider;
     /*@GetMapping("/fake/chats")
     public List<ChatsDto> fakeChats(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String token = request.getHeader("Authorization");
@@ -49,9 +50,10 @@ public class FakeAuthEndpoint {
         return new ResponseEntity("Hello", HttpStatus.OK);
     }
 
-    @PostMapping("/testlogin")
+    @PostMapping("/login/test")
     public ResponseEntity testLoginEndpoint() {
-        return new ResponseEntity(MemberDto.createMock(), HttpStatus.OK);
+        String token = tokenProvider.token();
+        return new ResponseEntity(MemberDto.createDto("keno", "keno@gmail.com", token), HttpStatus.OK);
     }
 
 }

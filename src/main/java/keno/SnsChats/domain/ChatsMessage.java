@@ -5,7 +5,7 @@ import lombok.Getter;
 import javax.persistence.*;
 
 @Entity @Getter
-public class Message {
+public class ChatsMessage {
     @Id @GeneratedValue
     @Column(name = "message_id")
     private Long id;

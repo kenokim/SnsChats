@@ -36,4 +36,10 @@ public class Chats {
         chats.numMembers = 1;
         return chats;
     }
+
+    @Deprecated
+    public static Chats createMock() {
+        Member member = Member.createMockEntity();
+        return createChats(member, "Test", 10, LocalDateTime.now());
+    }
 }

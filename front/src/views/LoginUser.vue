@@ -64,7 +64,7 @@ import axios from 'axios'
         })
       },
       testlogin() {
-        return axios.post('http://localhost:8080/testlogin')
+        return axios.post('http://localhost:8080/login/test')
           .then(({ data }) => {
             this.$store.commit('SET_USER_DATA', data) 
             this.$router.push({ name: 'chats' })

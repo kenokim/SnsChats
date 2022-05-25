@@ -21,7 +21,7 @@ const store = createStore({
       axios.defaults.headers.common['Authorization'] = `Bearer ${
         userData.token
       }`
-      axios.defaults.headers.common['Authorization'] = userData.token
+      //axios.defaults.headers.common['Authorization'] = userData.token
     },
     //CLEAR_USER_DATA (state) {
     CLEAR_USER_DATA () {

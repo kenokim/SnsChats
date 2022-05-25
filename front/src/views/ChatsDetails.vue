@@ -327,7 +327,7 @@ export default {
     })
     },
     send () {
-      axios.post('http://localhost:8080/chats/' + this.$route.params.id + "/send", {content: this.content}, {withCredentails: true})
+      axios.post('http://localhost:8080/chats/' + this.$route.params.id + "/message", {content: this.content}, {withCredentails: true})
       .then(() => {
         this.load()
       })

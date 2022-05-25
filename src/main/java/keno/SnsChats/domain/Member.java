@@ -22,4 +22,11 @@ public class Member {
         member.name = name;
         return member;
     }
+
+    @Deprecated
+    public static Member createMockEntity() {
+        Member member = new Member();
+        member.name = "Test";
+        return member;
+    }
 }
