@@ -12,7 +12,7 @@
 <계획>\
 Version1: JAVA + Spring MVC 로 기본기능 + 작동하는 app 만들기
 <br>
-05.25 로그인 기능 프로토 구현 - OAuth 2 framework 대로 구현
+05.25 로그인 기능 프로토 구현 - OAuth2 서버와 클라이언트 입장 둘 다 생각해 보면서
 <br>
 
 
